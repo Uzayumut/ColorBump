@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -bounds, bounds), transform.position.y,transform.position.z);//Clamps the given value between the given minimum float and maximum float values
+        transform.position += FindObjectOfType<CameraMovement>().camVelocity;
     }
 
 
