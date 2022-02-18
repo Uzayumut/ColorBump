@@ -18,6 +18,20 @@ public class MoveLeftAndRight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!stop && !dontMove)
+        {
+            if (right)
+            {
+                transform.position += Vector3.right * speed * Time.deltaTime;
+                if (transform.position.x >= maxX)
+                    right = false;
+            }
+            else
+            {
+                transform.position += Vector3.left * speed * Time.deltaTime;
+                if (transform.position.x <= minX)
+                    right = true;
+            }
+        }
     }
 }
