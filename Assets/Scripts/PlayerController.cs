@@ -45,5 +45,8 @@ public class PlayerController : MonoBehaviour
             //added rigidbody change rate and precision(*sensitivity-rb.velocity/5)
 
         }
+
+        rb.velocity.Normalize();
+
     }
 }
