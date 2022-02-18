@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Rigidbody rb;
+    private Vector3 lastMousePos;
+    public float sensitivity = .16f, clampDelta = 42f;
+
+    public float bounds = 5;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
