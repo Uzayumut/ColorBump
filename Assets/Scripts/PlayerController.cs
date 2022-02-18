@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 moveForce = Vector3.ClampMagnitude(vector, clampDelta);
             
-            rb.AddForce(Vector3.forward * 2+(-moveForce*sensitivity-rb.velocity/5), ForceMode.VelocityChange);
+            rb.AddForce(Vector3.forward * 1.5f+(-moveForce*sensitivity-rb.velocity/5), ForceMode.VelocityChange);
             //A forward direction(Vector3.forward*2)
             //independent of the weight of the mass (ForceMod.VelocityChange)
             //mouse not moving backwards(-moveforce)
