@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class BgImage : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Color randomColor;
     void Start()
     {
-        
+        randomColor = new Color(Random.Range(0.1f, 1), Random.Range(0.1f, 1), Random.Range(0.1f, 1));
+        GetComponent<SpriteRenderer>().color = randomColor;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
