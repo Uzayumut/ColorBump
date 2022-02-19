@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -93,8 +93,21 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision target)
     {
-        if (target.gameObject.tag == "Enemy") ;
-        GameOver();
+        if (target.gameObject.tag == "Enemy")
+        {
+            print("Hit enemy");
+            GameOver();
+        }
+
+
+
+    }
+    private void OnTriggerEnter(Collider target)
+    {
+        if (target.gameObject.name == "Finish")
+        {
+            StartCoroutine(NextLevel());
+        }
     }
 
 }
