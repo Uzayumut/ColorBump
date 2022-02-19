@@ -36,7 +36,7 @@ public class MoveLeftAndRight : MonoBehaviour
     }
     private void OnCollisionEnter(Collision target)
     {
-        if (target.gameObject.tag == "White")
+        if (target.gameObject.tag == "White"&&target.gameObject.GetComponent<Rigidbody>().velocity.magnitude>1)
         {
             stop = true;
             GetComponent<Rigidbody>().freezeRotation = false;
