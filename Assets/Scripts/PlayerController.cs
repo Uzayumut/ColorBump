@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float bounds = 5;
 
     [HideInInspector]
-    public bool canMove;
+    public bool canMove,gameOver;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,6 +27,13 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
                 canMove = true;
+        }
+        if (!canMove && gameOver)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
 
     }
@@ -65,4 +73,18 @@ public class PlayerController : MonoBehaviour
         rb.velocity.Normalize();
 
     }
+    private void GameOver()
+    {
+        canMove = false;
+        gameOver = true;
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+
+    }
+    private void OnCollisionEnter(Collision target)
+    {
+        if (target.gameObject.tag == "Enemy") ;
+        GameOver();
+    }
+
 }
