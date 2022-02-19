@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
                 canMove = true;
         }
+        
 
     }
 
