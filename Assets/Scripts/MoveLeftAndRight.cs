@@ -34,4 +34,12 @@ public class MoveLeftAndRight : MonoBehaviour
             }
         }
     }
+    private void OnCollisionEnter(Collision target)
+    {
+        if (target.gameObject.tag == "White")
+        {
+            stop = true;
+            GetComponent<Rigidbody>().freezeRotation = false;
+        }
+    }
 }
