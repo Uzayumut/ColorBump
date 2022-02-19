@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float bounds = 5;
 
     [HideInInspector]
-    public bool canMove,gameOver;
+    public bool canMove,gameOver,finish;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-        }else if (!canMove )
+        }else if (!canMove &&!finish)
         {
             if (Input.GetMouseButtonDown(0))
                 canMove = true;
@@ -81,6 +81,15 @@ public class PlayerController : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
+    }
+
+    IEnumerator NextLevel()
+    {
+        finish = true;
+        canMove = false;
+        PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level", 1) + 1);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Level" + PlayerPrefs.GetInt("Level"));
     }
     private void OnCollisionEnter(Collision target)
     {
