@@ -35,6 +35,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
                 canMove = true;
         }
+        if (!canMove && gameOver)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
 
     }
 
