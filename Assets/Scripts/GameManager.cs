@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
         hand = GameObject.Find("Hand");
 
         levelNo = GameObject.Find("LevelNo").GetComponent<TextMesh>();
+
     }
     private void Start()
     {
@@ -33,13 +35,15 @@ public class GameManager : MonoBehaviour
         cLevelText.text = level.ToString();
 
         startDistance = Vector3.Distance(player.transform.position, finish.transform.position);
+
+        //SceneManager.LoadScene("Level" + level);
     }
 
     
     void Update()
     {
         distance= Vector3.Distance(player.transform.position, finish.transform.position);
-        if (player.transform.position.x < finish.transform.position.x)
+        if (player.transform.position.z < finish.transform.position.z)
         {
             fill.fillAmount = 1 - (distance / startDistance);
         }
