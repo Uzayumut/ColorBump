@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public bool canMove,gameOver,finish;
+
+    //public GameObject breakableSphere;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                //Time.timeScale = 1f;
             }
         }else if (!canMove &&!finish)
         {
@@ -80,11 +83,18 @@ public class PlayerController : MonoBehaviour
     }
     private void GameOver()
     {
+        //GameObject shatterSphere = Instantiate(breakableSphere, transform.position, Quaternion.identity);
+        //foreach (Transform o in shatterSphere.transform)
+        //{
+        //    o.GetComponent<Rigidbody>().AddForce(Vector3.forward *5, ForceMode.Impulse);
+        //}
+        //shatterSphere.transform.position = Vector3.zero;
         canMove = false;
         gameOver = true;
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
+        //Time.timeScale = .3f;
     }
 
     IEnumerator NextLevel()
