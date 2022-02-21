@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Text cLevelText, nLevelText;
+    private Image fill;
+
+    private float startDistance, distance;
+
+    private GameObject player, finish, levelNo;
     void Start()
     {
         
