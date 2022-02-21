@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 //Time.timeScale = 1f;
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;//bug fixing
             }
         }else if (!canMove &&!finish)
         {
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<Collider>().enabled = false;
 
         //Time.timeScale = .3f;
+        Time.fixedDeltaTime = Time.timeScale*0.02f;//bug fixing
     }
 
     IEnumerator NextLevel()
@@ -109,8 +111,11 @@ public class PlayerController : MonoBehaviour
     {
         if (target.gameObject.tag == "Enemy")
         {
-            print("Hit enemy");
-            GameOver();
+            if (!gameOver)
+            {
+                GameOver();
+            }
+           
         }
 
 
