@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     private TextMesh levelNo;
     void Awake()
     {
-        cLevelText = GameObject.Find("CurrentLevel").GetComponent<Text>();
-        nLevelText = GameObject.Find("NextLevel").GetComponent<Text>();
+        cLevelText = GameObject.Find("CurrentLevelText").GetComponent<Text>();
+        nLevelText = GameObject.Find("NextLevelText").GetComponent<Text>();
         fill = GameObject.Find("Fill").GetComponent<Image>();
 
         player = GameObject.Find("Player");
@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
             fill.fillAmount = 1 - (distance / startDistance);
         }
         
+    }
+    public void RemoveUI()
+    {
+        hand.SetActive(false);
     }
     
 }
