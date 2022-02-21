@@ -38,6 +38,12 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
+        distance= Vector3.Distance(player.transform.position, finish.transform.position);
+        if (player.transform.position.x < finish.transform.position.x)
+        {
+            fill.fillAmount = 1 - (distance / startDistance);
+        }
         
     }
+    
 }
